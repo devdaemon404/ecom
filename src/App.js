@@ -29,7 +29,6 @@ function App() {
     }
   }, []);
 
-
   return (
     <Fragment>
       <Header currentUser={currentUser} />
