@@ -19,7 +19,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 
 function App({ currentUser, setCurrentUser }) {
   useEffect(() => {
-    let unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapShot) => {
@@ -35,8 +35,7 @@ function App({ currentUser, setCurrentUser }) {
     return () => {
       unsubscribeFromAuth();
     };
-    // eslint-disable-next-line
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <Fragment>
